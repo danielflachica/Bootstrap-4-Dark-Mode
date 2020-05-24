@@ -9,16 +9,125 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- Styling for page -->
     <link rel="stylesheet" href="public/css/app.css">
+    <!-- Bootstrap Dark Mode CSS -->
+    <link rel="stylesheet" href="public/css/dark-mode.css">
 
     <title>Bootstrap Dark Mode Demo</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body class="bg-light">
+    <!-- Start Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top shadow">
+      <a class="navbar-brand" href="index.html">Dark Mode Demo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#css">CSS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#javascript">JavaScript</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="https://github.com/danielflachica/Bootstrap-4-Dark-Mode" target="_blank">Clone on GitHub</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" target="_blank">Install with npm</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-info my-2 my-sm-0" type="submit" title="For demo purposes only... sorry!">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Start Main Content -->
+    <main role="main" class="container bg-white shadow-sm mb-5">
+      <div class="p-4 p-md-5">
+        <div class="d-none d-md-block">
+          <h1 class="display-4 text-dark">Bootstrap 4 Dark Mode Documentation</h1>
+        </div>
+        <div class="d-md-none">
+          <h1 class=" text-dark">Bootstrap 4 Dark Mode Documentation</h1>
+        </div>
+        <hr>
+        <p class="lead text-dark">
+          This mobile-friendly Dark Mode vs. Light Mode toggler was made entirely with <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap 4</a>, a couple of <a href="#css">custom styles</a> and one simple <a href="#javascript">JS function</a>. To see the effect, simply click on the button below. To use it in your own projects, you need to make sure your text-level elements make use of Bootstrap's <code>text{-light|-dark|-white|-muted}</code> class and your containers/wrappers/background elements use Bootstrap's <code>bg{-light|-white|-dark}</code> or the <code>bg-black</code> class that ships with this package.
+        </p>
+        <hr>
+
+        <div class="row p-3">
+          <div class="col text-center">
+            <button class="btn btn-primary" type="button" role="button">Toggle Dark/Light Mode!</button>
+          </div>
+        </div>
+
+        <!-- Begin CSS Section -->
+        <a id="css">
+          <h3 class="mt-4 text-dark">Dark Mode CSS</h3>
+          <p class="text-dark">The only custom CSS needed is shown below:</p>
+          <div class="card mb-3">
+            <div class="card-body pb-2 px-4 bg-light">
+              <a href="javascript:void(0)" class="badge badge-info p-2 mr-3 position-absolute" style="right:0;" onclick="copyCode('code-css')">Copy!</a>
+              <pre id="code-css">
+.bg-black {
+  background-color: #1f1f1f;
+}
+</pre>
+            </div>
+          </div>
+          <p class="text-dark">
+            Feel free to customize the hexadecimal value of the <code>bg-black</code> class' <code>background-color</code> property to your liking.
+          </p>
+        </a>
+        <!-- End CSS Section -->
+
+        <!-- Begin JS Section -->
+        <a id="javascript">
+          <h3 class="mt-4">Dark Mode JavaScript</h3>
+          <p class="text-dark">The only JavaScript needed (<span class="text-muted">in addition to Bootstrap's core JS</span>) for the Side Drawer is documented below. Be sure to include it before the end of the <code>body</code> tag.</p>
+          <div class="card mb-3">
+            <div class="card-body pb-2 px-4 bg-light">
+              <a href="javascript:void(0)" class="badge badge-info p-2 mr-3 position-absolute" style="right:0;" onclick="copyCode('code-js')">Copy!</a>
+              <pre id="code-js">
+function x() {
+  ...
+}
+</pre>
+            </div>
+          </div>
+          <p class="text-dark">The JavaScript functions shown above are pretty straightforward.</p>
+        </a>
+        <!-- End JS Section -->
+
+        <hr class="mt-4">
+
+        <p class="lead text-dark text-center mt-5">That's all there is to it! Now go code something.<small class="ml-2"><a href="#">Back to Top</a></small></p>
+      </div>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+
+    <!-- Dark Mode JS -->
+    <script src="public/js/dark_mode.js"></script>
+    <!-- Copy Code JS -->
+    <script src="public/js/copy_code.js"></script>
   </body>
 </html>
