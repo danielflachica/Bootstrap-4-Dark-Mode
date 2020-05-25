@@ -14,7 +14,7 @@
 
     <title>Bootstrap Dark Mode Demo</title>
   </head>
-  <body class="bg-light">
+  <body class="bg-light" onload="createPageStateElement()">
     <!-- Start Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top shadow">
       <a class="navbar-brand" href="index.html">Dark Mode Demo</a>
@@ -28,17 +28,23 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#getting-started">Getting Started</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#css">CSS</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#javascript">JavaScript</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#supported-content">Supported Content</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Download</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="https://github.com/danielflachica/Bootstrap-4-Dark-Mode" target="_blank">Clone on GitHub</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#" target="_blank">Install with npm</a>
+              <a class="dropdown-item" href="#" target="_blank" onclick="runNpm()">Install with npm</a>
             </div>
           </li>
         </ul>
@@ -56,19 +62,32 @@
           <h1 class="display-4 text-dark">Bootstrap 4 Dark Mode Documentation</h1>
         </div>
         <div class="d-md-none">
-          <h1 class=" text-dark">Bootstrap 4 Dark Mode Documentation</h1>
+          <h1 class="text-dark">Bootstrap 4 Dark Mode Documentation</h1>
         </div>
         <hr>
         <p class="lead text-dark">
-          This mobile-friendly Dark Mode vs. Light Mode toggler was made entirely with <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap 4</a>, a couple of <a href="#css">custom styles</a> and one simple <a href="#javascript">JS function</a>. To see the effect, simply click on the button below. To use it in your own projects, you need to make sure your text-level elements make use of Bootstrap's <code>text{-light|-dark|-white|-muted}</code> class and your containers/wrappers/background elements use Bootstrap's <code>bg{-light|-white|-dark}</code> or the <code>bg-black</code> class that ships with this package.
+          This mobile-friendly Dark Mode vs. Light Mode toggler was made entirely with <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap 4</a>, a couple of <a href="#css">custom styles</a> and some <a href="#javascript">JS functions</a>. To see the effect, simply click on the button below. To use it in your own projects, you need to make sure <span class="text-info">ALL</span> your text-level elements make use of Bootstrap's <code>text{-light|-dark|-white}</code> class and your containers/wrappers/background elements use Bootstrap's <code>bg{-light|-white|-dark}</code> classes. Optionally, you may use the <code>text-black</code> and <code>bg-black</code> classes that ship with this package.
         </p>
         <hr>
 
         <div class="row p-3">
           <div class="col text-center">
-            <button class="btn btn-primary" type="button" role="button">Toggle Dark/Light Mode!</button>
+            <button class="btn btn-primary" type="button" role="button" onclick="toggleDisplayMode()">Toggle Dark/Light Mode!</button>
           </div>
         </div>
+
+        <!-- Begin Getting Started Section -->
+        <a id="getting-started">
+          <h3 class="mt-4 text-dark">Getting Started</h3>
+          <p class="text-dark">By default, the <code>page-display-mode</code> element, which dictates the state of the page, is always set to "light" upon page load. To get started, you'll need to go over the following steps:</p>
+          <ul class="list-group overflow-auto">
+            <li class="list-group-item p-2 rounded bg-light text-dark border-0 rounded-0">1. Make sure ALL text-level elements have a <code>text{-light|-dark|-white|-black}</code> class.</li>
+            <li class="list-group-item p-2 rounded bg-light text-dark border-0 rounded-0">2. Make sure ALL wrappers, containers, and background elements have a <code>bg{-light|-dark|-white|-black}</code> class.</li>
+            <li class="list-group-item p-2 rounded bg-light text-dark border-0 rounded-0">3. Inlcude <code>dark-mode.css</code> and <code>dark_mode.js</code> in your project.</li>
+            <li class="list-group-item p-2 rounded bg-light text-dark border-0 rounded-0">4. In the <code>body</code> element of your views, BE SURE TO ADD <code>onload="createPageStateElement()"</code> as an attribute.</li>
+          </ul>
+        </a>
+        <!-- End Getting Started Section -->
 
         <!-- Begin CSS Section -->
         <a id="css">
@@ -77,36 +96,147 @@
           <div class="card mb-3">
             <div class="card-body pb-2 px-4 bg-light">
               <a href="javascript:void(0)" class="badge badge-info p-2 mr-3 position-absolute" style="right:0;" onclick="copyCode('code-css')">Copy!</a>
-              <pre id="code-css">
+              <pre id="code-css" class="text-dark">
 .bg-black {
   background-color: #1f1f1f;
+}
+
+.text-black {
+  color: #1f1f1f;
 }
 </pre>
             </div>
           </div>
           <p class="text-dark">
-            Feel free to customize the hexadecimal value of the <code>bg-black</code> class' <code>background-color</code> property to your liking.
+            Feel free to customize the hexadecimal value of the <code>bg-black</code> and <code>text-black</code> class' <code>background-color</code> property to your liking.
           </p>
         </a>
         <!-- End CSS Section -->
 
         <!-- Begin JS Section -->
         <a id="javascript">
-          <h3 class="mt-4">Dark Mode JavaScript</h3>
-          <p class="text-dark">The only JavaScript needed (<span class="text-muted">in addition to Bootstrap's core JS</span>) for the Side Drawer is documented below. Be sure to include it before the end of the <code>body</code> tag.</p>
+          <h3 class="mt-4 text-dark">Dark Mode JavaScript</h3>
+          <p class="text-dark">The JavaScript needed (<span class="text-muted">in addition to Bootstrap's core JS</span>) is documented below. Be sure to include the <code>dark_mode.js</code> file as a script before the end of the <code>body</code> tag.</p>
           <div class="card mb-3">
             <div class="card-body pb-2 px-4 bg-light">
               <a href="javascript:void(0)" class="badge badge-info p-2 mr-3 position-absolute" style="right:0;" onclick="copyCode('code-js')">Copy!</a>
-              <pre id="code-js">
-function x() {
-  ...
+              <pre id="code-js" class="text-dark">
+function toggleDisplayMode() {
+  var e_page_state = document.getElementById("page-display-mode")
+  var page_state = e_page_state.innerHTML;
+
+  /* Dark Mode Variables */
+  var e_text_dark = document.querySelectorAll(".text-dark");
+  var e_text_black = document.querySelectorAll(".text-black");
+  var e_bg_dark = document.querySelectorAll(".bg-dark");
+  var e_bg_black = document.querySelectorAll(".bg-black");
+
+  /* Light Mode Variables */
+  var e_text_light = document.querySelectorAll(".text-light");
+  var e_text_white = document.querySelectorAll(".text-white");
+  var e_bg_light = document.querySelectorAll(".bg-light");
+  var e_bg_white = document.querySelectorAll(".bg-white");
+
+  /* Other Elements */
+  var e_cards = document.querySelectorAll(".card");
+
+  // Switch from Light to Dark Mode
+  if (page_state == "light") {
+    switchClasses(e_text_dark, "text-dark", "text-light");
+    switchClasses(e_text_black, "text-black", "text-white");
+    switchClasses(e_bg_light, "bg-light", "bg-dark");
+    switchClasses(e_bg_white, "bg-white", "bg-black");
+    addClass(e_cards, "border-dark");
+  }
+  // Switch from Dark to Light Mode
+  else if (page_state == "dark") {
+    switchClasses(e_text_light, "text-light", "text-dark");
+    switchClasses(e_text_white, "text-white", "text-black");
+    switchClasses(e_bg_dark, "bg-dark", "bg-light");
+    switchClasses(e_bg_black, "bg-black", "bg-white");
+    removeClass(e_cards, "border-dark");
+  }
+
+  // Update page state
+  e_page_state.innerHTML = switchState(page_state);
 }
+
+function switchClasses(elements, fromClass, toClass) {
+  for(let elem of elements) {
+    if (elem.classList.contains(fromClass)) {
+      elem.classList.remove(fromClass);
+      elem.classList.add(toClass);
+    }
+  }
+
+  return true;
+}
+
+function addClass(elements, className) {
+  for (let elem of elements) {
+    if (!elem.classList.contains(className)) {
+      elem.classList.add(className);
+    }
+  }
+}
+
+function removeClass(elements, className) {
+  for (let elem of elements) {
+    if (elem.classList.contains(className)) {
+      elem.classList.remove(className);
+    }
+  }
+}
+
+function switchState(state) {
+  switch(state) {
+    case "light":
+      state = "dark"; 
+      break;
+    case "dark":
+      state = "light";
+      break;
+    default:
+      state = "undefined";
+  }
+
+  return state;
+}
+
+function createPageStateElement() {
+  var div = document.createElement("div");
+  var id = "page-display-mode";
+  var init_mode = document.createTextNode("light");
+  div.appendChild(init_mode)
+  div.id = id;
+  div.classList.add("d-none");
+  document.getElementsByTagName("body")[0].appendChild(div);
+}
+
+window.toggleDisplayMode = toggleDisplayMode;
+window.createPageStateElement = createPageStateElement;
 </pre>
             </div>
           </div>
-          <p class="text-dark">The JavaScript functions shown above are pretty straightforward.</p>
         </a>
         <!-- End JS Section -->
+
+        <!-- Begin Support Section -->
+        <a id="supported-content">
+          <h3 class="mt-4 text-dark">What's Currently Supported?</h3>
+          <p class="text-dark">
+            As of today, all HTML elements (paragraphs, headers, lists, divs, etc.) which make use of Bootstrap's <code>text{-light|-dark|-white}</code> and/or <code>bg{-light|-white|-dark}</code> classes are supported. Additionally, elements may also call the custom <code>text-black</code> and <code>bg-black</code> classes in <code>dark-mode.css</code>.
+          </p>
+          <p class="text-dark">
+            However, the following are currently not supported when toggling to and from Dark Mode:
+          </p>
+          <ul type="circle">
+            <li class="text-dark">horizontal rules (<code>&lt;hr&gt;</code>)</li>
+            <li class="text-dark">Bootstrap dropdown links</li>
+            <li class="text-dark">input elements (<code>&lt;input&gt;</code>)</li>
+          </ul>
+        </a>
+        <!-- End Support Section -->
 
         <hr class="mt-4">
 
@@ -129,5 +259,8 @@ function x() {
     <script src="public/js/dark_mode.js"></script>
     <!-- Copy Code JS -->
     <script src="public/js/copy_code.js"></script>
+    <script type="text/javascript">
+      function runNpm() { alert("npm install bootstrap-dark-mode"); }
+    </script>
   </body>
 </html>
